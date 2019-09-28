@@ -14,6 +14,19 @@ class Restaurant extends Component {
     this.setState({ restaurants });
   }
 
+  toggleFavorite = ({ target }) => {
+    const { restaurants } = this.state;
+    const restaurant = restaurants[target.id];
+
+    if(restaurant.hasOwnProperty('favorite') && restaurant.favorite === true) {
+      const newState = Object.assign(restaurant, { favorite: false });
+      this.setState({ restaurants: Object.assign(restaurants, newState) })
+    } else {
+      const newState = Object.assign(restaurant, { favorite: true });
+      this.setState({ restaurants: Object.assign(restaurants, newState) })
+    }
+  }
+
   render() {
     const { restaurants } = this.state;
     return (
@@ -22,7 +35,19 @@ class Restaurant extends Component {
           restaurants.map((restaurant, index) => (
             <div key={index} className="name" id={index}>
               <p>{restaurant.name}</p>
-              <button type="button">Make Favourite</button>
+              <button 
+                type="button"
+              >
+                {restaurant.favorite ? 
+                <i className="fav-button fas fa-heart"
+                  id={index}
+                  onClick={this.toggleFavorite}
+                /> : 
+                <i className="fav-button far fa-heart"
+                  id={index}
+                  onClick={this.toggleFavorite}
+                />}
+              </button>
             </div>
           ))
         }
