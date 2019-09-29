@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import data from '../../mockData';
+import sortRestaurant from '../../helper/sort';
 
 class Restaurant extends Component {
   constructor(props) {
@@ -12,6 +13,12 @@ class Restaurant extends Component {
   componentDidMount = () => {
     const { restaurants } = data;
     this.setState({ restaurants });
+  }
+
+  sort = (sortValue) => {
+    const { restaurants } = this.state;
+    const sortedRestaurants = sortRestaurant(restaurants, sortValue);
+    this.setState({ restaurants: sortedRestaurants }); 
   }
 
   filterRestaurant = ({target}) => {
@@ -38,11 +45,15 @@ class Restaurant extends Component {
     const { restaurants } = this.state;
     return (
       <div>
-        <input type="search" onChange={this.filterRestaurant} />
+        <input type="search" onChange={this.filterRestaurant} className="searchBox" />
+        <div className="sort">
+          <button type="button" className="best-match" onClick={() => this.sort('bestMatch')}>Best Match</button>
+        </div>
         {
           restaurants.map((restaurant, index) => (
-            <div key={index} className="name" id={index}>
+            <div key={index} className="restaurant-list" id={index}>
               <p>{restaurant.name}</p>
+              <p>{restaurant.status}</p>
               <button 
                 type="button"
               >

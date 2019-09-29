@@ -19,3 +19,8 @@
 .App-link {
   color: #09d3ac;
 }
+
+.restaurant-list {
+  background: #09d3ac;
+  margin: 20px;
+}
