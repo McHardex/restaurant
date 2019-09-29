@@ -14,6 +14,13 @@ class Restaurant extends Component {
     this.setState({ restaurants });
   }
 
+  filterRestaurant = ({target}) => {
+    const searchValue = target.value.toLowerCase();
+    const { restaurants } = data;
+    const searchResult = restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(searchValue));
+    this.setState({ restaurants: searchResult });
+  }
+
   toggleFavorite = ({ target }) => {
     const { restaurants } = this.state;
     const restaurant = restaurants[target.id];
@@ -31,6 +38,7 @@ class Restaurant extends Component {
     const { restaurants } = this.state;
     return (
       <div>
+        <input type="search" onChange={this.filterRestaurant} />
         {
           restaurants.map((restaurant, index) => (
             <div key={index} className="name" id={index}>
