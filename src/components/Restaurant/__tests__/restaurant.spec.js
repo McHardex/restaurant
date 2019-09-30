@@ -72,4 +72,10 @@ describe('<Restaurant />', () => {
     wrapper.find('.popularity').simulate('click');
     expect(wrapper.state().restaurants[0].name).toEqual('Tanoshii Sushi');
   });
+
+  it('should sort restaurant list by Average Product Price', () => {
+    const wrapper = shallow(<Restaurant />);
+    wrapper.find('.averageProductPrice').simulate('click');
+    expect(wrapper.state().restaurants[2].name).toEqual('De Amsterdamsche Tram');
+  });
 });
