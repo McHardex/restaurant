@@ -9,7 +9,7 @@ const andFilter = (itemToFilter, firstFilterKey, secondFilterKey, secondFilterVa
 };
 
 const sortRestaurant = (restaurants, sortKey) => {
-  const sorted = restaurants.sort((a, b) => a.sortingValues[sortKey] - b.sortingValues[sortKey]);
+  const sorted = restaurants.sort((a, b) => b.sortingValues[sortKey] - a.sortingValues[sortKey]);
   
   const noneFavorites = sorted.filter(item =>  !item.favorite);
   let favorites = sorted.filter(item => item.favorite);

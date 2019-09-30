@@ -12,13 +12,18 @@ class Restaurant extends Component {
 
   componentDidMount = () => {
     const { restaurants } = data;
+    restaurants.forEach((restaurant) => {
+      const { sortingValues: { distance, popularity, ratingAverage }} = restaurant;
+      const topRestaurant = (distance * popularity) + ratingAverage;
+      Object.assign(restaurant.sortingValues, { topRestaurant });
+    });
     this.setState({ restaurants });
   }
 
   sort = (sortValue) => {
     const { restaurants } = this.state;
     const sortedRestaurants = sortRestaurant(restaurants, sortValue);
-    this.setState({ restaurants: sortedRestaurants }); 
+    this.setState({ restaurants: sortedRestaurants });
   }
 
   filterRestaurant = ({target}) => {
@@ -32,7 +37,7 @@ class Restaurant extends Component {
     const { restaurants } = this.state;
     const restaurant = restaurants[target.id];
 
-    if(restaurant.hasOwnProperty('favorite') && restaurant.favorite === true) {
+    if(restaurant.hasOwnProperty('favorite') && restaurant.favorite) {
       const newState = Object.assign(restaurant, { favorite: false });
       this.setState({ restaurants: Object.assign(restaurants, newState) })
     } else {
@@ -55,6 +60,7 @@ class Restaurant extends Component {
           <button type="button" className="averageProductPrice" onClick={() => this.sort('averageProductPrice')}>Average Product Price</button>
           <button type="button" className="deliveryCosts" onClick={() => this.sort('deliveryCosts')}>Delivery Costs</button>
           <button type="button" className="minCost" onClick={() => this.sort('minCost')}>Minimum Cost</button>
+          <button type="button" className="topRestaurant" onClick={() => this.sort('topRestaurant')}>Top Restaurants</button>
         </div>
         {
           restaurants.map((restaurant, index) => (
