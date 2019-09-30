@@ -61,7 +61,7 @@ List of libraries, tools, etc needed (e.g. npm etc)
 
 ## Prototype
 
-<!-- The application is staged [here](https://crypro-order-book.netlify.com/) -->
+The application is staged [here](https://restaurant-mchardex.netlify.com/)
 
 ## Deployment
 
