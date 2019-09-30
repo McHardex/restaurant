@@ -60,4 +60,10 @@ describe('<Restaurant />', () => {
     wrapper.find('.ratingAverage').simulate('click');
     expect(wrapper.state().restaurants[3].name).toEqual('Lunchpakketdienst');
   });
+
+  it('should sort restaurant list by distance', () => {
+    const wrapper = shallow(<Restaurant />);
+    wrapper.find('.distance').simulate('click');
+    expect(wrapper.state().restaurants[2].name).toEqual('Aarti 2');
+  });
 });
