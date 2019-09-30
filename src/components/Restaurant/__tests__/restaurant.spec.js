@@ -54,4 +54,10 @@ describe('<Restaurant />', () => {
     wrapper.find('.newest').simulate('click');
     expect(wrapper.state().restaurants[2].name).toEqual('De Amsterdamsche Tram');
   });
+
+  it('should sort restaurant list by ratingAverage', () => {
+    const wrapper = shallow(<Restaurant />);
+    wrapper.find('.ratingAverage').simulate('click');
+    expect(wrapper.state().restaurants[3].name).toEqual('Lunchpakketdienst');
+  });
 });
