@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import data from '../../mockData';
 import sortRestaurant from '../../helper/sort';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './restaurant.scss';
+import meal from '../../images/meal.jpg';
 
 class Restaurant extends Component {
   constructor(props) {
@@ -48,41 +53,49 @@ class Restaurant extends Component {
 
   render() {
     const { restaurants } = this.state;
+    const { reference } = this.props;
     return (
-      <div>
-        <input type="search" onChange={this.filterRestaurant} className="searchBox" />
-        <div className="sort">
-          <button type="button" className="best-match" onClick={() => this.sort('bestMatch')}>Best Match</button>
-          <button type="button" className="newest" onClick={() => this.sort('newest')}>Newest</button>
-          <button type="button" className="ratingAverage" onClick={() => this.sort('ratingAverage')}>Rating Average</button>
-          <button type="button" className="distance" onClick={() => this.sort('distance')}>Distance</button>
-          <button type="button" className="popularity" onClick={() => this.sort('popularity')}>Popularity</button>
-          <button type="button" className="averageProductPrice" onClick={() => this.sort('averageProductPrice')}>Average Product Price</button>
-          <button type="button" className="deliveryCosts" onClick={() => this.sort('deliveryCosts')}>Delivery Costs</button>
-          <button type="button" className="minCost" onClick={() => this.sort('minCost')}>Minimum Cost</button>
-          <button type="button" className="topRestaurant" onClick={() => this.sort('topRestaurant')}>Top Restaurants</button>
+      <div className="restaurant" ref={reference}>
+        <div className="search-sort">
+          <input type="search" onChange={this.filterRestaurant} className="searchBox" placeholder="Search Restaurants" />
+          <h3>Sort Restaurant:</h3>
+          <div className="sort">
+            <button type="button" className="best-match" onClick={() => this.sort('bestMatch')}>Best Match</button>
+            <button type="button" className="newest" onClick={() => this.sort('newest')}>Newest</button>
+            <button type="button" className="ratingAverage" onClick={() => this.sort('ratingAverage')}>Rating Average</button>
+            <button type="button" className="distance" onClick={() => this.sort('distance')}>Distance</button>
+            <button type="button" className="popularity" onClick={() => this.sort('popularity')}>Popularity</button>
+            <button type="button" className="averageProductPrice" onClick={() => this.sort('averageProductPrice')}>Average Product Price</button>
+            <button type="button" className="deliveryCosts" onClick={() => this.sort('deliveryCosts')}>Delivery Costs</button>
+            <button type="button" className="minCost" onClick={() => this.sort('minCost')}>Minimum Cost</button>
+            <button type="button" className="topRestaurant" onClick={() => this.sort('topRestaurant')}>Top Restaurants</button>
+          </div>
         </div>
+        {restaurants.length === 0 && <p className="no-result">No result found</p>}
+        <div className="restaurant-list">
         {
           restaurants.map((restaurant, index) => (
-            <div key={index} className="restaurant-list" id={index}>
-              <p>{restaurant.name}</p>
-              <p>{restaurant.status}</p>
-              <button 
-                type="button"
-              >
-                {restaurant.favorite ? 
-                <i className="fav-button fas fa-heart"
-                  id={index}
-                  onClick={this.toggleFavorite}
-                /> : 
-                <i className="fav-button far fa-heart"
-                  id={index}
-                  onClick={this.toggleFavorite}
-                />}
-              </button>
-            </div>
+              <Card style={{ width: '100%' }} key={index}>
+                <Card.Img variant="top" src={meal} />
+                <Card.Body>
+                  <Card.Title>{restaurant.name}</Card.Title>
+                  <Card.Text><i className="fas fa-utensils" /> {restaurant.status}</Card.Text>
+                  <Button variant="primary">
+                      {restaurant.favorite ? 
+                    <i className="fav-button fas fa-heart"
+                      id={index}
+                      onClick={this.toggleFavorite}
+                    /> : 
+                    <i className="fav-button far fa-heart"
+                      id={index}
+                      onClick={this.toggleFavorite}
+                    />}
+                  </Button>
+                </Card.Body>
+              </Card>
           ))
         }
+        </div>
       </div>
     )
   }

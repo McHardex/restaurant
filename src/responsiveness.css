@@ -1,0 +1,36 @@
+@media (min-width: 320px) and (max-width: 767px) {
+  .restaurant {
+    padding: 30px !important;
+  }
+  .restaurant-list {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+
+  .searchBox {
+    font-size: 25px !important;
+  }
+
+  h1 {
+    left: 0 !important;
+    right: 0 !important;
+    margin: auto !important;
+    margin-left: !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .restaurant-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .searchBox {
+    font-size: 20px !important;
+  }
+}
+
+::placeholder {
+  color: #868383d2;
+}
