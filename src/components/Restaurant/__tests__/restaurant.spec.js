@@ -78,4 +78,10 @@ describe('<Restaurant />', () => {
     wrapper.find('.averageProductPrice').simulate('click');
     expect(wrapper.state().restaurants[2].name).toEqual('De Amsterdamsche Tram');
   });
+
+  it('should sort restaurant list by delivery cost', () => {
+    const wrapper = shallow(<Restaurant />);
+    wrapper.find('.deliveryCosts').simulate('click');
+    expect(wrapper.state().restaurants[0].name).toEqual('Tanoshii Sushi');
+  });
 });
