@@ -1,68 +1,68 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Restaurant list
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+**Restaurant list** is a simple application where users are able to sort the restaurant list based on its current openings state, can favorite a restaurant, can search for restaurants by their name and can select a sort value to further sort the list.
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Description](#description)
+- [Setup](#setup)
+  - [Dependencies](#dependencies)
+  - [Getting Started](#getting-started)
+- [Checklists](#checklists)
+- [Prototype](#prototype)
+- [Deployment](#deployment)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+## Setup
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Dependencies
 
-### `npm run build`
+List of libraries, tools, etc needed (e.g. npm etc)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces
+- [Jest and Enzyme] - For unit testing
+- [Font-awesome](https://fontawesome.com) - social logos on your website with Font Awesome
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Getting Started
 
-### `npm run eject`
+- Clone the repo - `git clone https://github.com/McHardex/restaurant.git`
+- Change into the project directory - `cd restaurant`
+- Install project dependencies run `npm install`
+- Run the server `npm start` or `yarn start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Running the tests
+- run `npm test`
+- run `npm run coverage` to get the test coverage report
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Checklists
+- Users can search for restaurants by name
+- Users can favorite and unfavorite a restaurant
+- Users can sort restaurant lists from top to bottom based on:
+  - best match
+  - newest
+  - rating average
+  - distance
+  - popularity
+  - average product price
+  - delivery costs
+  - minimum costs
+  - top restaurants which is calculated by (distance * popularity) + rating average
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Note**: 
+- Favorite restaurants are displayed at the top of the sorting list
+  - If favorite restaurants are more than one, they are sorted based on their current opening states(**opened** on top of the list, **order ahead** at the middle and **closed** at the bottom **
+- Restaurants with opening state of:
+  - **Opened** restaurants are displayed on _top_ of the list
+  - **order ahead** are displayed in the _middle_
+  - **closed** are displayed at the _bottom_ of the list
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Prototype
 
-## Learn More
+<!-- The application is staged [here](https://crypro-order-book.netlify.com/) -->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Deployment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The application is deployed with Netlify.
