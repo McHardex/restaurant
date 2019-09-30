@@ -43,9 +43,15 @@ describe('<Restaurant />', () => {
     expect(wrapper.state().restaurants[1].favorite).toEqual(true);
   });
 
-  it('should sort restaurant list based on best match', () => {
+  it('should sort restaurant list by best match', () => {
     const wrapper = shallow(<Restaurant />);
     wrapper.find('.best-match').simulate('click');
     expect(wrapper.state().restaurants[0].name).toEqual('Tanoshii Sushi');
+  });
+
+  it('should sort restaurant list by newest', () => {
+    const wrapper = shallow(<Restaurant />);
+    wrapper.find('.newest').simulate('click');
+    expect(wrapper.state().restaurants[2].name).toEqual('De Amsterdamsche Tram');
   });
 });

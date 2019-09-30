@@ -48,6 +48,7 @@ class Restaurant extends Component {
         <input type="search" onChange={this.filterRestaurant} className="searchBox" />
         <div className="sort">
           <button type="button" className="best-match" onClick={() => this.sort('bestMatch')}>Best Match</button>
+          <button type="button" className="newest" onClick={() => this.sort('newest')}>Newest</button>
         </div>
         {
           restaurants.map((restaurant, index) => (
