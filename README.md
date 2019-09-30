@@ -35,7 +35,7 @@ List of libraries, tools, etc needed (e.g. npm etc)
 
 ### Running the tests
 - run `npm test`
-- run `npm run coverage` to get the test coverage report
+- run `npm run test:coverage` to get the test coverage report
 
 ## Checklists
 - Users can search for restaurants by name
