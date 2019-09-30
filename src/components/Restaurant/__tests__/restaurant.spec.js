@@ -66,4 +66,10 @@ describe('<Restaurant />', () => {
     wrapper.find('.distance').simulate('click');
     expect(wrapper.state().restaurants[2].name).toEqual('Aarti 2');
   });
+
+  it('should sort restaurant list by popularity', () => {
+    const wrapper = shallow(<Restaurant />);
+    wrapper.find('.popularity').simulate('click');
+    expect(wrapper.state().restaurants[0].name).toEqual('Tanoshii Sushi');
+  });
 });

@@ -51,6 +51,7 @@ class Restaurant extends Component {
           <button type="button" className="newest" onClick={() => this.sort('newest')}>Newest</button>
           <button type="button" className="ratingAverage" onClick={() => this.sort('ratingAverage')}>Rating Average</button>
           <button type="button" className="distance" onClick={() => this.sort('distance')}>Distance</button>
+          <button type="button" className="popularity" onClick={() => this.sort('popularity')}>Popularity</button>
         </div>
         {
           restaurants.map((restaurant, index) => (
